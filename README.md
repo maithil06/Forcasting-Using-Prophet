@@ -27,3 +27,43 @@ The following Python libraries are required to run this notebook:
 You can install `fbprophet` using pip:
 ```bash
 !pip install fbprophet
+```
+
+## Data
+The notebook expects a CSV file named `dataset.csv` in the same directory. This dataset should contain at least the following columns:
+- **Date**: Date information (expected format: YYYYMMDD).
+- **Store/Product**: A categorical column identifying different time series (e.g., `LOS_ANGELES-TESLA_MODEL_X`).
+- **Value**: The numerical value to be forecasted.
+
+## Notebook Sections
+The notebook is structured into the following key sections:
+
+1. **Import Dependencies**
+   - Imports `pandas` for data manipulation and `Prophet` for forecasting.
+
+2. **Load Data**
+   - Reads the `dataset.csv` file into a pandas DataFrame and displays the first few rows and data types.
+
+3. **Apply Data Preprocessing**
+   - Converts the `Date` column to datetime objects, filters the data for a specific `Store/Product` line (`LOS_ANGELES-TESLA_MODEL_X`), and renames columns to `ds` (datestamp) and `y` (dependent variable) as required by Prophet.
+
+4. **Create Time Series Model**
+   - Initializes and fits the Prophet model to the preprocessed data.
+
+5. **Evaluate Model**
+   - Generates future dates, makes predictions using the trained model, and plots the forecast and its individual components (trend, weekly seasonality, yearly seasonality).
+
+6. **BONUS ROUND - Scaling Up**
+   - Demonstrates how to:
+     - Identify all unique time series in the `Store/Product` column.
+     - Iterate through each unique time series.
+     - Preprocess data for each series.
+     - Train a separate Prophet model for each series and store them in a dictionary.
+     - Generate a forecast for one of the additional time series (`LOS_ANGELES-TESLA_MODEL_S`) as an example.
+
+## Usage
+1. Ensure you have Python installed.
+2. Install the required dependencies using the command provided above.
+3. Place your `dataset.csv` file in the same directory as the `Prophet.ipynb` notebook.
+4. Open the Jupyter Notebook and run the cells sequentially to understand the forecasting process.
+5. Modify the "BONUS ROUND" section to forecast other time series or extend the forecast period as needed.
